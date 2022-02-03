@@ -2,7 +2,8 @@ package ch01_introduction;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class AbstractVehicleTest {
     /* Tests use Saloon as concrete type. Any other concrete type derived from
@@ -16,7 +17,12 @@ class AbstractVehicleTest {
         AbstractVehicle vehicle = new Saloon(new StandardEngine(1000));
 
         // assert
-        assertEquals(vehicle.getColour(), Vehicle.Colour.UNPAINTED);
+        assertThat(vehicle.getColour())
+                .as("Vehicle default colour should be UNPAINTED")
+                .isEqualTo(Vehicle.Colour.UNPAINTED);
+
+        // assert (junit style)
+        // assertEquals(vehicle.getColour(), Vehicle.Colour.UNPAINTED);
     }
 
     @Test
@@ -28,7 +34,12 @@ class AbstractVehicleTest {
         AbstractVehicle vehicle = new Saloon(new StandardEngine(1000), colour);
 
         // assert
-        assertEquals(vehicle.getColour(), colour);
+        assertThat(vehicle.getColour())
+                .as("Vehicle colour should be %s", colour)
+                .isEqualTo(colour);
+
+        // assert (junit style)
+        // assertEquals(vehicle.getColour(), colour);
     }
 
     @Test
@@ -40,11 +51,15 @@ class AbstractVehicleTest {
         AbstractVehicle vehicle = new Saloon(engine);
 
         // assert
-        assertEquals(vehicle.getEngine(), engine);
+        assertThat(vehicle.getEngine())
+                .isEqualTo(engine);
+
+        // assert (junit style)
+        // assertEquals(vehicle.getEngine(), engine);
     }
 
     @Test
-    void paintChangesColour() {
+    void paintChangesVehicleColour() {
         // arrange
         Vehicle.Colour colour = Vehicle.Colour.SILVER;
         AbstractVehicle vehicle = new Saloon(new StandardEngine(1000));
@@ -53,7 +68,11 @@ class AbstractVehicleTest {
         vehicle.paint(colour);
 
         // assert
-        assertEquals(vehicle.getColour(), colour);
+        assertThat(vehicle.getColour())
+                .isEqualTo(colour);
+
+        // assert (junit style)
+        // assertEquals(vehicle.getColour(), colour);
     }
 
     @Test
@@ -68,8 +87,14 @@ class AbstractVehicleTest {
         String vehicleString = vehicle.toString();
 
         // assert
-        assertTrue(vehicleString.contains(className));
-        assertTrue(vehicleString.contains(engine.toString()));
-        assertTrue(vehicleString.contains(colour.toString()));
+        assertThat(vehicleString)
+                .contains(className)
+                .contains(engine.toString())
+                .contains(colour.toString());
+
+        // assert (junit style)
+        // assertTrue(vehicleString.contains(className));
+        // assertTrue(vehicleString.contains(engine.toString()));
+        // assertTrue(vehicleString.contains(colour.toString()));
     }
 }

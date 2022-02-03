@@ -5,7 +5,8 @@ import ch01_introduction.AbstractVan;
 import ch01_introduction.Vehicle;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class FactoryMethodTest {
     @Test
@@ -17,7 +18,10 @@ class FactoryMethodTest {
         Vehicle vehicle = factory.build(VehicleFactory.DrivingStyle.MIDRANGE, Vehicle.Colour.SILVER);
 
         // assert
-        assertTrue(vehicle instanceof AbstractCar);
+        assertThat(vehicle).isInstanceOf(AbstractCar.class);
+
+        // assert (junit style)
+        // assertTrue(vehicle instanceof AbstractCar);
     }
 
     @Test
@@ -29,6 +33,9 @@ class FactoryMethodTest {
         Vehicle vehicle = factory.build(VehicleFactory.DrivingStyle.MIDRANGE, Vehicle.Colour.SILVER);
 
         // assert
-        assertTrue(vehicle instanceof AbstractVan);
+        assertThat(vehicle).isInstanceOf(AbstractVan.class);
+
+        // assert (junit style)
+        // assertTrue(vehicle instanceof AbstractVan);
     }
 }

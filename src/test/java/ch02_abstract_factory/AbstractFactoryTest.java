@@ -2,7 +2,8 @@ package ch02_abstract_factory;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class AbstractFactoryTest {
     @Test
@@ -16,9 +17,14 @@ class AbstractFactoryTest {
         Windows windows = factory.createWindows();
 
         // assert
-        assertTrue(body instanceof CarBody &&
-                chassis instanceof CarChassis &&
-                windows instanceof CarWindows);
+        assertThat(body).isInstanceOf(CarBody.class);
+        assertThat(chassis).isInstanceOf(CarChassis.class);
+        assertThat(windows).isInstanceOf(CarWindows.class);
+
+        // assert (junit style)
+        // assertTrue(body instanceof CarBody &&
+        //         chassis instanceof CarChassis &&
+        //         windows instanceof CarWindows);
     }
 
     @Test
@@ -32,8 +38,13 @@ class AbstractFactoryTest {
         Windows windows = factory.createWindows();
 
         // assert
-        assertTrue(body instanceof VanBody &&
-                chassis instanceof VanChassis &&
-                windows instanceof VanWindows);
+        assertThat(body).isInstanceOf(VanBody.class);
+        assertThat(chassis).isInstanceOf(VanChassis.class);
+        assertThat(windows).isInstanceOf(VanWindows.class);
+
+        // assert (junit style)
+        // assertTrue(body instanceof VanBody &&
+        //         chassis instanceof VanChassis &&
+        //         windows instanceof VanWindows);
     }
 }

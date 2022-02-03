@@ -2,7 +2,8 @@ package ch06_singleton;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class SingletonTest {
     @Test
@@ -14,7 +15,10 @@ class SingletonTest {
         SerialNumberGeneratorTraditional gen2 = SerialNumberGeneratorTraditional.getInstance();
 
         // assert
-        assertSame(gen1, gen2);
+        assertThat(gen1).isSameAs(gen2);
+
+        // assert (junit style)
+        // assertSame(gen1, gen2);
     }
 
     @Test
@@ -26,7 +30,10 @@ class SingletonTest {
         int serial2 = SerialNumberGeneratorTraditional.getInstance().getNextSerial();
 
         // assert
-        assertTrue(serial2 == serial1 + 1);
+        assertThat(serial2 - serial1).isEqualTo(1);
+
+        // assert (junit style)
+        // assertTrue(serial2 == serial1 + 1);
     }
 
     @Test
@@ -40,6 +47,10 @@ class SingletonTest {
         int engineSerial2 = SerialNumberGenerator.ENGINE.getNextSerial();
 
         // assert
-        assertTrue(vehicleSerial2 - vehicleSerial1 == 1 && engineSerial2 - engineSerial1 == 1);
+        assertThat(vehicleSerial2 - vehicleSerial1).isEqualTo(1);
+        assertThat(engineSerial2 - engineSerial1).isEqualTo(1);
+
+        // assert (junit style)
+        // assertTrue(vehicleSerial2 - vehicleSerial1 == 1 && engineSerial2 - engineSerial1 == 1);
     }
 }

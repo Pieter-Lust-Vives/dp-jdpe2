@@ -2,7 +2,8 @@ package ch01_introduction;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class TurboEngineTest {
     @Test
@@ -14,7 +15,10 @@ class TurboEngineTest {
         Engine engine = new TurboEngine(size);
 
         // assert
-        assertEquals(size, engine.getSize());
+        assertThat(engine.getSize()).isEqualTo(size);
+
+        // assert (junit style)
+        // assertEquals(size, engine.getSize());
     }
 
     @Test
@@ -25,7 +29,10 @@ class TurboEngineTest {
         Engine engine = new TurboEngine(1000);
 
         // assert
-        assertTrue(engine.isTurbo());
+        assertThat(engine.isTurbo()).isTrue();
+
+        // assert (junit style)
+        // assertTrue(engine.isTurbo());
     }
 
     @Test
@@ -40,7 +47,12 @@ class TurboEngineTest {
         String engineString = engine.toString();
 
         // assert
-        assertTrue(engineString.contains(className));
-        assertTrue(engineString.contains(sizeString));
+        assertThat(engineString)
+                .contains(className)
+                .contains(sizeString);
+
+        // assert (junit style)
+        // assertTrue(engineString.contains(className));
+        // assertTrue(engineString.contains(sizeString));
     }
 }
