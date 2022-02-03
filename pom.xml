@@ -15,7 +15,7 @@
     <maven-resource-plugin.version>3.2.0</maven-resource-plugin.version>
     <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
     <assertj.version>3.17.2</assertj.version>
-
+    <mockito.version>3.7.7</mockito.version>
   </properties>
 
   <dependencies>
@@ -29,6 +29,18 @@
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
       <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
