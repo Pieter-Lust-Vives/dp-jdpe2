@@ -7,6 +7,22 @@ import static org.assertj.core.api.Assertions.*;
 
 class SingletonTest {
     @Test
+    void AllSerialNumberGeneratorsUseTheSameCounter() {
+        // arrange
+        SerialNumberGeneratorTraditional gen1 = SerialNumberGeneratorTraditional.getInstance();
+        SerialNumberGeneratorTraditional gen2 = SerialNumberGeneratorTraditional.getInstance();
+        int serial0 = gen1.getNextSerial();
+
+        // act
+        int serial1 = gen1.getNextSerial();
+        int serial2 = gen2.getNextSerial();
+
+        // assert
+        assertThat(serial1 - serial0).isEqualTo(1);
+        assertThat(serial2 - serial1).isEqualTo(1);
+    }
+
+    @Test
     void SerialNumberGeneratorTraditionalAlwaysReturnsSameInstance() {
         // arrange
 
