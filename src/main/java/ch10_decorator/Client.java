@@ -11,6 +11,7 @@ package ch10_decorator;
 public class Client {
     
     public static void main(String[] args) {
+        // Create a car with options, using the decorator classes
         // Create a blue saloon car...
         Vehicle myCar = new Saloon(new StandardEngine(1300));
         myCar.paint(Vehicle.Colour.BLUE);
@@ -35,6 +36,21 @@ public class Client {
         // Now add satellite-navigation...
         myCar = new SatNavVehicle(myCar);
         System.out.println(myCar);
+
+        // Do the same, with a builder
+        // Create a blue saloon car...
+        Vehicle myCar2 = new Saloon(new StandardEngine(1300));
+        myCar2.paint(Vehicle.Colour.BLUE);
+        System.out.println(myCar2);
+        // Add all options...
+        myCar2 = DecoratedVehicleBuilder.startBuilding(myCar2)
+                                        .addAirconditiong()
+                                        .addAlloyWheels()
+                                        .addLeatherSeats()
+                                        .addMetallicPaint()
+                                        .addSatelliteNavigation()
+                                        .getFinishedVehicle();
+        System.out.println(myCar2);
     }
     
 }
