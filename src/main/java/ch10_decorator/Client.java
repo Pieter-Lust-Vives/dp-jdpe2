@@ -44,7 +44,7 @@ public class Client {
         System.out.println(myCar2);
         // Add all options...
         myCar2 = DecoratedVehicleBuilder.startBuilding(myCar2)
-                                        .addAirconditiong()
+                                        .addAirconditioning()
                                         .addAlloyWheels()
                                         .addLeatherSeats()
                                         .addMetallicPaint()

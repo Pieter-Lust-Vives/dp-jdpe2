@@ -17,7 +17,7 @@ public class DecoratedVehicleBuilder {
         return new DecoratedVehicleBuilder(vehicle);
     }
 
-    public DecoratedVehicleBuilder addAirconditiong() {
+    public DecoratedVehicleBuilder addAirconditioning() {
         this.vehicle = new AirConditionedVehicle(vehicle);
         return this;
     }
