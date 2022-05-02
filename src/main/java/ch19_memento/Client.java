@@ -13,8 +13,9 @@ public class Client {
     public static void main(String[] args) {
         approach1();
         approach2();
+        approach3();
     }
-    
+
     private static void approach1() {
         System.out.println("APPROACH 1");
         Speedometer1 speedo = new Speedometer1();
@@ -68,5 +69,27 @@ public class Client {
             ex.printStackTrace();
         }
     }
-    
+
+    private static void approach3() {
+        System.out.println("APPROACH 3");
+        Speedometer3 speedo = new Speedometer3();
+
+        speedo.setCurrentSpeed(50);
+        speedo.setCurrentSpeed(100);
+        System.out.println("Current speed: " + speedo.getCurrentSpeed());
+
+        // Save the state of 'speedo'
+        SpeedometerMemento3 memento = speedo.createMemento();
+
+        // Change the state of 'speedo'
+        speedo.setCurrentSpeed(80);
+        System.out.println("After setting to 80...");
+        System.out.println("Current speed: " + speedo.getCurrentSpeed());
+
+        // Restore the state of 'speedo'
+        System.out.println("Now restoring state...");
+        speedo.setMemento(memento);
+        System.out.println("Current speed: " + speedo.getCurrentSpeed());
+    }
+
 }
